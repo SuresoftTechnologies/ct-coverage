@@ -1,0 +1,24 @@
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
+   <f:entry>
+   
+   	 <table width="78%">
+      <col width="78%"/>
+      <tr>
+        <td>Path to xml files (e.g.: **/target/**.xml, **/ct.xml)</td>
+      </tr>
+      
+      <tr>
+        <td>
+          <f:textbox field="execPattern" default="**/**.xml" />
+        </td>
+      
+        
+      </tr>
+      </table>
+      <br/>
+
+    </f:entry>
+
+
+</j:jelly>

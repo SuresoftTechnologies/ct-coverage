@@ -1,0 +1,12 @@
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form" xmlns:e="/io/jenkins/plugins/ct/tags">
+ <j:if test="${it.hasChildren()}">
+  <tr>
+    <th style="background-color:#e0e0e0;">${%name}</th>
+	<th style="background-color:#e0e0e0;">${%statement}</th>
+	<th style="background-color:#e0e0e0;">${%branch}</th>
+	<th style="background-color:#e0e0e0;">${%mcdc}</th>
+	<th style="background-color:#e0e0e0;">${%call}</th>
+  </tr>
+ </j:if>  
+</j:jelly>
