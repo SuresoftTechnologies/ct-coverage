@@ -38,6 +38,7 @@ THE SOFTWARE.
     </parent>
 
     <name>CT Coverage</name>
+	<groupId>io.jenkins.plugins</groupId>
 	<artifactId>ct-coverage</artifactId>
     <version>0.1.0</version>
     <packaging>hpi</packaging>
