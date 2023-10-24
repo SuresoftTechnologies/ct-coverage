@@ -50,6 +50,13 @@ THE SOFTWARE.
         <argLine />
     </properties>
 	
+	<scm>
+		<connection>scm:git:https://github.com/SuresoftTechnologies/ct-coverage.git</connection>
+		<developerConnection>scm:git:https://github.com/SuresoftTechnologies/ct-coverage.git</developerConnection>
+		<url>https://github.com/SuresoftTechnologies/ct-coverage</url>
+		<tag>HEAD</tag>
+	</scm>
+	
     <licenses>
         <license>
             <name>MIT license</name>
