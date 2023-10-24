@@ -74,6 +74,7 @@ public final class CoverageReport extends AggregatedReport<CoverageReport/*dummy
 		action.getLogger().println("[JaCoCo plugin] Done.");
 	}
 	
+	@SuppressWarnings("lgtm[jenkins/unsafe-classes]")
 	public CoverageReport(CTBuildAction action, InputStream... xmlReports) throws IOException {
 		this(action);
 		//action.getLogger().println("[JaCoCo plugin] Loading packages..");
@@ -88,6 +89,7 @@ public final class CoverageReport extends AggregatedReport<CoverageReport/*dummy
         //action.getLogger().println("[JaCoCo plugin] Done.");
     }
 	
+	@SuppressWarnings("lgtm[jenkins/unsafe-classes]")
 	public CoverageReport(CTBuildAction action, File xmlReport) throws IOException {
         this(action);
         action.getLogger().println("[JaCoCo plugin] Loading packages..");
@@ -215,7 +217,7 @@ public final class CoverageReport extends AggregatedReport<CoverageReport/*dummy
 
 	@Override
 	public Run<?,?> getBuild() {
-		return action.getOwner();
+		return action.getOwner();''
 	}
 
     /**
@@ -224,6 +226,7 @@ public final class CoverageReport extends AggregatedReport<CoverageReport/*dummy
      * @throws IOException if any I/O error occurs
      */
     @WebMethod(name="jacoco.exec")
+    @SuppressWarnings({"lgtm[jenkins/no-permission-check]", "lgtm[jenkins/csrf]"})
     public HttpResponse doJacocoExec() throws IOException {
         final List<File> files = action.getJacocoReport().getExecFiles();
 
@@ -249,6 +252,7 @@ public final class CoverageReport extends AggregatedReport<CoverageReport/*dummy
         }
     }
     
+    @SuppressWarnings("lgtm[jenkins/unsafe-classes]")
     private Digester createDigester(boolean secure) throws SAXException {
         Digester digester = new Digester();
         if (secure) {
@@ -294,6 +298,7 @@ public final class CoverageReport extends AggregatedReport<CoverageReport/*dummy
 		*/
 	}
 
+	@SuppressWarnings({"lgtm[jenkins/no-permission-check]", "lgtm[jenkins/csrf]"})
     @Override
     public void add(MethodReport child) {
     	MethodCoverageImpl coverageInfo = new MethodCoverageImpl(child.getName(), child.getDesc(), child.getDisplayName());

@@ -50,6 +50,7 @@ public final class CTProjectAction implements Action {
         return null;
     }
 
+    @SuppressWarnings({"lgtm[jenkins/no-permission-check]", "lgtm[jenkins/csrf]"})
     public void doGraph(StaplerRequest req, StaplerResponse rsp) throws IOException {
        if (getLastResult() != null)
           getLastResult().doGraph(req,rsp);
