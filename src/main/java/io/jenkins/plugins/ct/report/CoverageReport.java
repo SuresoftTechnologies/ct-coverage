@@ -217,7 +217,7 @@ public final class CoverageReport extends AggregatedReport<CoverageReport/*dummy
 
 	@Override
 	public Run<?,?> getBuild() {
-		return action.getOwner();''
+		return action.getOwner();
 	}
 
     /**
