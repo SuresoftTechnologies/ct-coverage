@@ -295,6 +295,7 @@ public abstract class CoverageObject<SELF extends CoverageObject<SELF>> {
 	 * @param rsp Stapler response to which is sent the graph
 	 * @throws IOException if any I/O error occurs
 	 */
+	@SuppressWarnings({"lgtm[jenkins/csrf]", "lgtm[jenkins/no-permission-check]"})
 	public void doGraph(StaplerRequest req, StaplerResponse rsp) throws IOException {
 		if(ChartUtil.awtProblemCause != null) {
 			// not available. send out error message
