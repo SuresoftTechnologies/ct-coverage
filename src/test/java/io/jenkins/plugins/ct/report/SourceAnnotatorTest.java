@@ -19,7 +19,7 @@ public class SourceAnnotatorTest {
 
     @Test
     public void testSourceAnnotatorSimple() throws Exception {
-        File file = new File("src/test/java/hudson/plugins/ct/report/SourceAnnotatorTest.java");
+        File file = new File("src/test/java/io/jenkins/plugins/ct/report/SourceAnnotatorTest.java");
         assertTrue(file.exists());
         SourceAnnotator annotator = new SourceAnnotator(file);
         
@@ -29,13 +29,13 @@ public class SourceAnnotatorTest {
             annotator.printHighlightedSrcFile(cov, writer);
         }
         String string = new String(out.toByteArray());
-        assertTrue(string.contains("package hudson.plugins.ct.report"));
+        assertTrue(string.contains("package io.jenkins.plugins.ct.report"));
         assertTrue(string.contains("</code>"));        
     }
 
     @Test
     public void testSourceAnnotator() throws Exception {
-        File file = new File("src/test/java/hudson/plugins/ct/report/SourceAnnotatorTest.java");
+        File file = new File("src/test/java/io/jenkins/plugins/ct/report/SourceAnnotatorTest.java");
         assertTrue(file.exists());
         SourceAnnotator annotator = new SourceAnnotator(file);
         

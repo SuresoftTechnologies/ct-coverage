@@ -40,10 +40,10 @@ public class CoverageGraphLayoutTest {
 
         assertEquals("New Coverage Types", 4, CoverageType.values().length);
         
-        assertEquals("line", STATEMENT.getMessage());
+        assertEquals("statement", STATEMENT.getMessage());
         assertEquals("branch", BRANCH.getMessage());
-        assertEquals("method", CALL.getMessage());
-        assertEquals("complexity", MCDC.getMessage());
+        assertEquals("call", CALL.getMessage());
+        assertEquals("MC/DC", MCDC.getMessage());
 
         Locale.setDefault(GERMAN);
         assertEquals("Zeilen", STATEMENT.getMessage());
@@ -60,9 +60,9 @@ public class CoverageGraphLayoutTest {
     public void value() {
         Locale.setDefault(ENGLISH);
         assertEquals("New Coverage Value", 3, values().length);
-        assertEquals("line covered", COVERED.getMessage(STATEMENT));
-        assertEquals("line missed", MISSED.getMessage(STATEMENT));
-        assertEquals("line", PERCENTAGE.getMessage(STATEMENT));
+        assertEquals("statement covered", COVERED.getMessage(STATEMENT));
+        assertEquals("statement missed", MISSED.getMessage(STATEMENT));
+        assertEquals("statement", PERCENTAGE.getMessage(STATEMENT));
 
         Locale.setDefault(GERMAN);
         assertEquals("Zeilen abgedeckt", COVERED.getMessage(STATEMENT));
