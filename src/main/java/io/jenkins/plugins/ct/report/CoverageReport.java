@@ -50,7 +50,7 @@ public final class CoverageReport extends AggregatedReport<CoverageReport/*dummy
 
 	private CoverageReport(CTBuildAction action) {
 		this.action = action;
-		setName("Jacoco");
+		setName("CT Coverage");
 	}
 	
 //	private String instructionColor;
@@ -69,15 +69,15 @@ public final class CoverageReport extends AggregatedReport<CoverageReport/*dummy
 	 */
 	public CoverageReport(CTBuildAction action, @NonNull ExecutionFileLoader executionFileLoader ) {
 		this(action);
-		action.getLogger().println("[JaCoCo plugin] Loading packages..");
+		action.getLogger().println("[CT plugin] Loading packages..");
 
-		action.getLogger().println("[JaCoCo plugin] Done.");
+		action.getLogger().println("[CT plugin] Done.");
 	}
 	
 	@SuppressWarnings("lgtm[jenkins/unsafe-classes]")
 	public CoverageReport(CTBuildAction action, InputStream... xmlReports) throws IOException {
 		this(action);
-		//action.getLogger().println("[JaCoCo plugin] Loading packages..");
+		//action.getLogger().println("[CT plugin] Loading packages..");
         for (InputStream is: xmlReports) {
           try {
             createDigester(!Boolean.getBoolean(this.getClass().getName() + ".UNSAFE")).parse(is);
@@ -86,20 +86,20 @@ public final class CoverageReport extends AggregatedReport<CoverageReport/*dummy
           }
         }
         setParent(null);
-        //action.getLogger().println("[JaCoCo plugin] Done.");
+        //action.getLogger().println("[CT plugin] Done.");
     }
 	
 	@SuppressWarnings("lgtm[jenkins/unsafe-classes]")
 	public CoverageReport(CTBuildAction action, File xmlReport) throws IOException {
         this(action);
-        action.getLogger().println("[JaCoCo plugin] Loading packages..");
+        action.getLogger().println("[CT plugin] Loading packages..");
         try {
             createDigester(!Boolean.getBoolean(this.getClass().getName() + ".UNSAFE")).parse(xmlReport);
         } catch (SAXException e) {
             throw new IOException("Failed to parse "+xmlReport,e);
         }
         setParent(null);
-        action.getLogger().println("[JaCoCo plugin] Done.");
+        action.getLogger().println("[CT plugin] Done.");
     }
 
     /**
@@ -228,7 +228,7 @@ public final class CoverageReport extends AggregatedReport<CoverageReport/*dummy
     @WebMethod(name="jacoco.exec")
     @SuppressWarnings({"lgtm[jenkins/no-permission-check]", "lgtm[jenkins/csrf]"})
     public HttpResponse doJacocoExec() throws IOException {
-        final List<File> files = action.getJacocoReport().getExecFiles();
+        final List<File> files = action.getCTReport().getXmlFiles();
 
         switch (files.size()) {
         case 0:

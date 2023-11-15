@@ -32,7 +32,7 @@ public final class CTProjectAction implements Action {
     }
 
     public String getUrlName() {
-        return "jacoco";
+        return "ct";
     }
 
     /**

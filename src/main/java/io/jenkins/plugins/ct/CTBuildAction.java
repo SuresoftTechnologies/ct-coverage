@@ -71,7 +71,7 @@ public final class CTBuildAction extends CoverageObject<CTBuildAction> implement
 	 * TODO: add ability to trend thresholds on the graph
 	 */
 	private final CTHealthReportThresholds thresholds;
-	private transient CTProjectAction jacocoProjectAction;
+	private transient CTProjectAction ctProjectAction;
 
 	/**
 	 * 
@@ -121,7 +121,7 @@ public final class CTBuildAction extends CoverageObject<CTBuildAction> implement
 	}
 
 	public String getUrlName() {
-		return "jacoco";
+		return "ct-coverage";
 	}
 
 
@@ -210,7 +210,7 @@ public final class CTBuildAction extends CoverageObject<CTBuildAction> implement
 		return owner;
 	}
 
-    public CTReportDir getJacocoReport() {
+    public CTReportDir getCTReport() {
         return new CTReportDir(owner.getRootDir());
     }
     
@@ -239,7 +239,7 @@ public final class CTBuildAction extends CoverageObject<CTBuildAction> implement
 			getLogger().println("[Build Action] load report");
 			// Get the list of report files stored for this build
 			
-			List<FilePath> reports = getReports(this.layout.getExecFiles());
+			List<FilePath> reports = getReports(this.getCTReport().getXmlFiles());
             InputStream[] streams = new InputStream[reports.size()];
             for (int i=0; i<reports.size(); i++) {
             	streams[i] = reports.get(i).read();
@@ -338,7 +338,7 @@ public final class CTBuildAction extends CoverageObject<CTBuildAction> implement
         try {
     		DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
         
-	        for (File exec : layout.getExecFiles()) {
+	        for (File exec : layout.getXmlFiles()) {
 	
 	        	try {
 					Document document = builder.parse(exec.getAbsolutePath());
@@ -405,7 +405,7 @@ public final class CTBuildAction extends CoverageObject<CTBuildAction> implement
 	}
 
 	private void setOwner(Run<?, ?> owner) {
-		jacocoProjectAction = new CTProjectAction(owner.getParent());
+		ctProjectAction = new CTProjectAction(owner.getParent());
 		this.owner = owner;
 	}
 
@@ -421,6 +421,6 @@ public final class CTBuildAction extends CoverageObject<CTBuildAction> implement
 
 	@Override
 	public Collection<? extends Action> getProjectActions() {
-		return jacocoProjectAction != null ? Collections.singletonList(jacocoProjectAction) : Collections.emptyList();
+		return ctProjectAction != null ? Collections.singletonList(ctProjectAction) : Collections.emptyList();
 	}
 }

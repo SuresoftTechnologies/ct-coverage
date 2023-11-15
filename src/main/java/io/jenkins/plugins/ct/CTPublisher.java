@@ -541,7 +541,7 @@ public class CTPublisher extends Recorder implements SimpleBuildStep {
         logger.println("[CT plugin] Collecting CT coverage data...");
         Jenkins instance = Jenkins.getInstanceOrNull();
         if (instance != null) {
-            Plugin plugin = instance.getPlugin("jacoco");
+            Plugin plugin = instance.getPlugin("CT Coverage");
             if (plugin != null) {
                 logger.println("[CT plugin] Version: " + plugin.getWrapper().getVersion());
             }

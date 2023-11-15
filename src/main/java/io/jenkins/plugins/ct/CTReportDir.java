@@ -17,7 +17,7 @@ public class CTReportDir {
     private final File root;
 
     public CTReportDir(File rootDir) {
-        root = new File(rootDir, "jacoco");
+        root = new File(rootDir, "ct");
     }
 
     /**
@@ -53,23 +53,23 @@ public class CTReportDir {
      * Each exec file is stored in its own directory.
      * @return Directory that stores jacoco.exec files.
      *
-     * @see #getExecFiles()
+     * @see #getXmlFiles()
      */
-    public File getExecFilesDir() {
-        return new File(root,"execFiles");
+    public File getCoverageReportFilesDir() {
+        return new File(root,"xmlFiles");
     }
 
     /**
      * Lists up existing jacoco.exec files.
      * @return List of existing jacoco.exec files.
      */
-    public List<File> getExecFiles() {
+    public List<File> getXmlFiles() {
         List<File> r = new ArrayList<>();
         int i = 0;
-        File root = getExecFilesDir();
+        File root = getCoverageReportFilesDir();
         File checkPath;
-        while ((checkPath = new File(root, "exec" + i)).exists()) {
-            r.add(new File(checkPath,"jacoco.exec"));
+        while ((checkPath = new File(root, "xml" + i)).exists()) {
+            r.add(new File(checkPath,"coverage.xml"));
             i++;
         }
 
@@ -77,15 +77,15 @@ public class CTReportDir {
     }
 
     public void addExecFiles(Iterable<FilePath> execFiles) throws IOException, InterruptedException {
-        FilePath root = new FilePath(getExecFilesDir());
+        FilePath root = new FilePath(getCoverageReportFilesDir());
         int i=0;
         for (FilePath file : execFiles) {
             FilePath separateExecDir;
             do {
-                separateExecDir = new FilePath(root, "exec"+(i++));
+                separateExecDir = new FilePath(root, "xml"+(i++));
             } while (separateExecDir.exists());
 
-        	FilePath fullExecName = separateExecDir.child("jacoco.exec");
+        	FilePath fullExecName = separateExecDir.child("coverage.xml");
         	file.copyTo(fullExecName);
         }
     }
@@ -99,7 +99,7 @@ public class CTReportDir {
      */
     public ExecutionFileLoader parse(String[] includes, String... excludes) throws IOException {
         ExecutionFileLoader efl = new ExecutionFileLoader();
-        for (File exec : getExecFiles()) {
+        for (File exec : getXmlFiles()) {
             efl.addExecFile(new FilePath(exec));
         }
 

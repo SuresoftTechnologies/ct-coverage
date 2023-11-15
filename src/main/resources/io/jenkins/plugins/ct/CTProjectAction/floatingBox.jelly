@@ -4,9 +4,9 @@
     ${%Code Coverage Trend}
   </div>
   <div>
-    <a href="lastBuild/ct/"><img src="jacoco/graph" /></a>
+    <a href="lastBuild/ct/"><img src="ct/graph" /></a>
   </div>
   <div style="text-align:right">
-    <a href="jacoco/">${%enlarge}</a>
+    <a href="ct/">${%enlarge}</a>
   </div>
 </j:jelly>
